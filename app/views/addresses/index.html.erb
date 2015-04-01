@@ -1,0 +1,82 @@
+<% options = { units: "metric", APPID: "0adbf3f14350d0b4916e1e2bf59919f2" } %>
+<%#= OpenWeather::Current.city("Berlin, DE", lang: "de") %>
+<div class="weather-temperature"></div>
+
+<p id="notice"><%= notice %></p>
+
+<br><br>
+
+
+<%#= wi_icon('day-lightning') %>
+
+<%#= @temp.each do |temp| %> 
+<%# end %>
+
+<br>
+
+<%#=  OpenWeather::Current.city_id("1273874") %>
+<br>
+
+
+<%#= OpenWeather::Current.geocode(26.9000, 75.80000) %>
+<h1>Listing Addresses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th></th>
+      <th>Weather Report</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.city %></td>
+        <td><%#= address.zip %></td>
+        <td><%#= link_to 'Show', address %>
+         
+         
+
+          <% @temp = OpenWeather::Current.city(address.city) %>
+
+          <%if @temp["coord"].nil?%>
+            <b>"Give Address is not Proper"</b>
+          <%else%>
+            <table border="2">
+              <thead>
+               <th>City</th>
+               <th>Country</th>
+               <th>Temp</th>
+               <th>Min Temp</th>
+               <th>Max Temp</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%=@temp["name"] %></td>
+                  <td><%=@temp["sys"]["country"] %></td>
+                  <td><%= (((@temp["main"]["temp"])-32)/18).round(2) %>°C</td>
+                  <td><%= (((@temp["main"]["temp_min"])-32)/18).round(2) %>°C</td>
+                  <td><%= (((@temp["main"]["temp_max"])-32)/18).round(2) %>°C</td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          <%end%>
+
+          <%#= @temp["coord"]["lon"] %>
+          
+        </td>
+        <td><%#= link_to 'Edit', edit_address_path(address) %></td>
+        <td><%#= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address', new_address_path %>
