@@ -8,6 +8,7 @@ gem 'pg'
 gem 'open-weather'
 gem 'barometer', '~> 0.9.7'
 gem 'weather-icons-rails'
+gem 'geocoder'
 # gem 'yahoo-weather', '~> 1.2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

@@ -72,6 +72,7 @@ GEM
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.4.0)
+    geocoder (1.2.8)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -181,6 +182,7 @@ DEPENDENCIES
   barometer (~> 0.9.7)
   byebug
   coffee-rails (~> 4.1.0)
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   open-weather
